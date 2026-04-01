@@ -17,7 +17,8 @@ sessions = pd.read_sql("SELECT * FROM sessions WHERE username=?", conn, params=(
 
 # --- Metrics ---
 total_tasks = len(tasks)
-completed = len(tasks[tasks["done"] == 1])
+total = len(tasks)
+completed = len(tasks[tasks["status"] == "completed"])
 
 st.metric("Total Tasks", total_tasks)
 st.metric("Completed Tasks", completed)
