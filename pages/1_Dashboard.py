@@ -12,7 +12,7 @@ if "user" not in st.session_state:
 user = st.session_state.user
 
 # --- Load Data (safer) ---
-tasks = pd.read_sql("SELECT * FROM tasks WHERE username=?", conn, params=(user,))
+tasks = pd.read_sql("SELECT * FROM tasks WHERE user=?", conn, params=(user,))
 sessions = pd.read_sql("SELECT * FROM sessions WHERE username=?", conn, params=(user,))
 
 # --- Metrics ---
