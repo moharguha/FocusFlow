@@ -9,6 +9,7 @@ def login():
 
     if st.button("Login"):
         c.execute("SELECT * FROM users WHERE username=? AND password=?", (user, pwd))
+        
         result = c.fetchone()
 
         if result:
@@ -25,6 +26,6 @@ def signup():
     pwd = st.text_input("New Password", type="password")
 
     if st.button("Create Account"):
-        c.execute("INSERT INTO users VALUES (?, ?, ?)", (user, pwd, 0))
-        conn.commit()
-        st.success("Account created!")
+       c.execute("INSERT INTO users (username, password, premium) VALUES (?, ?, ?)", (user, pwd, 0))
+       conn.commit()
+       st.success("Account created!")
